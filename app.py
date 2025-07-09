@@ -100,16 +100,23 @@ def signupuser():
   return render_template("paclogin.html")
   
 # loginn
-@app.route("/loginuser", methods=['post'])
+@app.route("/loginuser", methods=['GET', 'POST'])
 def loginuser():
-  a=request.form.get("email")
-  b=request.form.get("password")
-  user=users.find_one({"email":a})
-  if (user):
-    if user['password']==b:
-      session['email']=a
-      return render_template('homepg.html')
-  return render_template('paclogin.html',status='invalid credential')
+    if request.method == 'GET':
+        return redirect('/login')  # or render_template('paclogin.html')
+
+    a = request.form.get("email")
+    b = request.form.get("password")
+
+    user = users.find_one({"email": a})
+    if user and user['password'] == b:
+        session['email'] = a
+        return render_template('homepg.html')
+    
+    return render_template('paclogin.html', status='invalid credential')
+
+
+
   # doctsignup
 @app.route("/doctsignup", methods=['post'])
 def doctsignup():
