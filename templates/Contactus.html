@@ -288,7 +288,9 @@
       </div>
     </div>
 
-    <footer>&copy; 2025 <a href="#">MEDICOVER</a>. All rights reserved.</footer>
+    <footer>
+  &copy; <span id="year"></span> <a href="#">MEDICOVER</a>. All rights reserved.
+</footer>
 
     <script>
       const hamburger = document.getElementById("hamburger");
@@ -300,7 +302,9 @@
 
       function exploreJobs() {
         window.location.href = "https://your-job-portal-link.com"; // Replace this with your actual job portal URL
+        
       }
+      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
