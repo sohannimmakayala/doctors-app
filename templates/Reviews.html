@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Reviews | MEDICOVER</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(to right, #e3f2fd, #f9fbe7);
+        color: #333;
+      }
+
+      header {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 1px solid #ccc;
+      }
+
+      header h3 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #3b82f6, #9333ea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+      }
+
+      .hamburger .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        border-radius: 3px;
+        transition: 0.3s;
+      }
+
+      nav {
+        margin-top: 80px;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 10px 0;
+        position: sticky;
+        top: 80px;
+        z-index: 999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #222;
+        font-weight: 600;
+        padding: 10px 16px;
+        border-radius: 8px;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #4a148c;
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          width: 100%;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+        }
+
+        .nav-links.open {
+          max-height: 300px;
+        }
+
+        .nav-links a {
+          text-align: center;
+          width: 100%;
+          margin: 5px 0;
+        }
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 160px auto 60px;
+        padding: 0 1rem;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        color: rgb(91, 134, 175);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .feedback-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .feedback-card {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(20px);
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 320px;
+        animation: fadeIn 0.5s ease forwards;
+        position: relative;
+      }
+
+      .feedback-card::before {
+        content: "“";
+        font-size: 3rem;
+        color: #5b86af;
+        position: absolute;
+        top: -20px;
+        left: 15px;
+        background-color: #e3f2fd;
+        border-radius: 50%;
+        padding: 10px;
+      }
+
+      .feedback-text {
+        font-size: 1.05rem;
+        color: #555;
+        margin-bottom: 1.2rem;
+      }
+
+      .feedback-author {
+        font-weight: 600;
+        color: #3b5998;
+      }
+
+      .rating-container {
+        background-color: #fff;
+        border-radius: 16px;
+        padding: 2rem;
+        margin-top: 4rem;
+        text-align: center;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      }
+
+      .rating-score {
+        font-size: 3rem;
+        color: #5b86af;
+      }
+
+      .rating-stars {
+        color: #ffcc00;
+        font-size: 1.5rem;
+        margin: 10px 0;
+      }
+
+      .rating-reviews {
+        color: #4a4a4a;
+        margin-bottom: 20px;
+      }
+
+      .rating-bar {
+        display: flex;
+        align-items: center;
+        margin: 6px 0;
+      }
+
+      .rating-bar span {
+        flex: 1;
+      }
+
+      .rating-bar div {
+        flex: 5;
+        background-color: #e0e0e0;
+        height: 10px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .rating-bar div::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: #5b86af;
+      }
+
+      .rating-bar-5 div::after {
+        width: 95%;
+      }
+      .rating-bar-4 div::after {
+        width: 3%;
+      }
+      .rating-bar-3 div::after {
+        width: 0%;
+      }
+      .rating-bar-2 div::after {
+        width: 0%;
+      }
+      .rating-bar-1 div::after {
+        width: 2%;
+      }
+
+      .review-form {
+        margin-top: 3rem;
+      }
+
+      .review-form textarea,
+      .review-form input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        font-family: "Inter", sans-serif;
+      }
+
+      .review-form button {
+        background-color: #6a1b9a;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .review-form button:hover {
+        background-color: #8e24aa;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        background-color: #222;
+        color: white;
+        font-size: 0.9rem;
+        margin-top: 60px;
+      }
+
+      footer a {
+        color: #bbdefb;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h3>MEDICOVER</h3>
+    </header>
+
+    <nav>
+      <div class="nav-wrapper">
+        <div class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="nav-links" id="nav-links">
+          <a href="/homepg">Home</a>
+          <a href="/pharmacy">Pharmacy</a>
+          <a href="/Aboutus">About Us</a>
+          <a href="/Reviews">Reviews</a>
+          <a href="/Contactus">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h2>Patients' experience is our priority</h2>
+
+      <div class="feedback-cards" id="feedback-list">
+        <div class="feedback-card">
+          <p class="feedback-text">
+            Service and treatment is very good. Thank you for taking care of my
+            father.
+          </p>
+          <p class="feedback-author">- Puja</p>
+        </div>
+        <div class="feedback-card">
+          <p class="feedback-text">
+            I got fabulous experience in AINU as the doctors and staff are the
+            best.
+          </p>
+          <p class="feedback-author">- Babaji Ch Parida</p>
+        </div>
+        <div class="feedback-card">
+          <p class="feedback-text">
+            This hospital is very good and faithful. This is rare one in the
+            city.
+          </p>
+          <p class="feedback-author">- Karan Chouhan</p>
+        </div>
+      </div>
+
+      <form class="review-form" id="reviewForm">
+        <h3>Leave your review</h3>
+        <textarea
+          id="reviewText"
+          rows="4"
+          placeholder="Your review..."
+          required
+        ></textarea>
+        <input
+          type="text"
+          id="reviewAuthor"
+          placeholder="Your name..."
+          required
+        />
+        <button type="submit">Submit Review</button>
+      </form>
+
+      <div class="rating-container">
+        <div class="rating-header">Patients have rated our doctors:</div>
+        <div class="rating-score">4.9/5</div>
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-reviews">
+          111,874 Verified reviews<br />Up to 12/10/2024
+        </div>
+
+        <div class="rating-bar rating-bar-5">
+          <span>5</span>
+          <div></div>
+        </div>
+        <div class="rating-bar rating-bar-4">
+          <span>4</span>
+          <div></div>
+        </div>
+        <div class="rating-bar rating-bar-3">
+          <span>3</span>
+          <div></div>
+        </div>
+        <div class="rating-bar rating-bar-2">
+          <span>2</span>
+          <div></div>
+        </div>
+        <div class="rating-bar rating-bar-1">
+          <span>1</span>
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>&copy; 2025 <a href="#">MEDICOVER</a>. All rights reserved.</footer>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      const reviewForm = document.getElementById("reviewForm");
+      const feedbackList = document.getElementById("feedback-list");
+
+      reviewForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const text = document.getElementById("reviewText").value;
+        const author = document.getElementById("reviewAuthor").value;
+
+        const card = document.createElement("div");
+        card.className = "feedback-card";
+        card.innerHTML = `
+        <p class="feedback-text">${text}</p>
+        <p class="feedback-author">- ${author}</p>
+      `;
+        feedbackList.prepend(card);
+        reviewForm.reset();
+      });
+    </script>
+  </body>
+</html>

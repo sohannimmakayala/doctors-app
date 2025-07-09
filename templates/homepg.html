@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEDICOVER - Modern Healthcare Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/homepg.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <img
+            src="https://media.istockphoto.com/id/1279385296/vector/health-and-medical-vector-stock-illustration-design-health-care-illustration.jpg?s=612x612&w=0&k=20&c=H-UmDQnb2wxHrKgpK7Gb4CGciAi_eV5wFnLfa5lozI4="
+            alt="Med Logo"
+          />
+          <h3>MEDICOVER</h3>
+        </div>
+        <div class="search-container">
+          <form action="/search" method="get" class="search-box">
+            <input
+              type="text"
+              name="query"
+              id="search"
+              placeholder="Search doctors, specializations..."
+            />
+            <button type="submit" id="search-btn">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/622/622669.png"
+                alt="Search Icon"
+              />
+            </button>
+          </form>
+        </div>
+        <div class="user-actions">
+          <form action="/logout" method="get">
+            <button type="submit" class="logout-btn">Logout</button>
+          </form>
+        </div>
+        <!-- hamburger -->
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav-wrapper">
+      <div class="nav-content" id="nav-links">
+        <a href="/pharmacy">Pharmacy</a>
+        <a href="/Aboutus">About Us</a>
+        <a href="#doctors">Doctors</a>
+        <a href="/Reviews">Reviews</a>
+        <a href="/Contactus">Contact Us</a>
+        <a href="/patientprof1">Profile</a>
+        <a href="/myappointments">My Appointments</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero-section">
+        <div class="consultation-options">
+          <div class="consultation-card">
+            <img
+              src="https://img.freepik.com/free-photo/doctor-offering-medical-teleconsultation_23-2149328999.jpg?t=st=1728757554~exp=1728761154~hmac=7f62dad1f11fd7f4298c74514dd6509e8a0e1713bf92c426b7a32ed0976409e9&w=740"
+              alt="Online Consultation"
+            />
+            <h2>
+              Make an appointment for <strong>Online Consultation</strong>
+            </h2>
+          </div>
+          <div class="consultation-card">
+            <img
+              src="https://img.freepik.com/premium-photo/photo-male-patient-writes-all-details-makes-notes-consultancy-with-doctor-sit-spacious-office_95891-2457.jpg?w=740"
+              alt="Doctor Visit"
+            />
+            <h2>Make an appointment for <strong>Doctor Visit</strong></h2>
+          </div>
+        </div>
+      </section>
+
+      <section class="specializations" id="doctors">
+        <h3>By Specialization</h3>
+        <div class="specialization-grid">
+          <a
+            href="/filterdoctors?type=Generalmedicine"
+            class="specialization-item"
+          >
+            <img
+              src="https://jaipurhospital.co.in/wp-content/uploads/2024/08/General-Medicine.jpg"
+              alt="General Medicine"
+            />
+            <span>General Medicine</span>
+          </a>
+          <a href="/filterdoctors?type=ENT" class="specialization-item">
+            <img
+              src="data:image/png;base64,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"
+              alt="ENT"
+            />
+            <span>ENT</span>
+          </a>
+          <a href="/filterdoctors?type=Cardiology" class="specialization-item">
+            <img
+              src="https://media.istockphoto.com/id/530199842/photo/3d-illustration-of-heart-medical-concept.jpg?s=612x612&w=0&k=20&c=4OndFgI-QkDkPGs_zBeRVVIdofZKQ1ogEX5bhCEW4-g="
+              alt="Cardiology"
+            />
+            <span>Cardiology</span>
+          </a>
+          <a href="/filterdoctors?type=Pulmonary" class="specialization-item">
+            <img
+              src="https://www.nimshospital.com/assets/img/departments/PULMONOLOGY.png"
+              alt="Pulmonary Medicine"
+            />
+            <span>Pulmonary Medicine</span>
+          </a>
+          <a
+            href="/filterdoctors?type=orthopaedics"
+            class="specialization-item"
+          >
+            <img
+              src="https://spfort.com/wp-content/uploads/2022/09/md-pic.jpg"
+              alt="Orthopaedics"
+            />
+            <span>Orthopaedics</span>
+          </a>
+          <a href="/filterdoctors?type=gynaecology" class="specialization-item">
+            <img
+              src="https://www.yashodahealthcare.com/blogs/wp-content/uploads/2024/01/WhatsApp-Image-2024-01-08-at-18.02.26-1536x864.jpeg"
+              alt="Gynaecology"
+            />
+            <span>Gynaecology</span>
+          </a>
+          <a href="/filterdoctors?type=diabetology" class="specialization-item">
+            <img
+              src="https://img.freepik.com/free-photo/high-angle-diabetic-woman-checking-her-glucose-level_23-2150756373.jpg?t=st=1728756725~exp=1728760325~hmac=12bf02b734c0a2ba75aea82c297d38ace9c4fef26892567af815ad24c86a6a95&w=740"
+              alt="Diabetology"
+            />
+            <span>Diabetology</span>
+          </a>
+          <a href="/filterdoctors?type=pregnancy" class="specialization-item">
+            <img
+              src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoiaWhoLWhlYWx0aGNhcmUtYmVyaGFkXC9maWxlXC9VZzJWSEpWbzE1MVV1NHc2R3ZUVy5qcGcifQ:ihh-healthcare-berhad:UJc5A3me3nhj8s1jmoiXt65k9xFl0FkUAqBxmYj73Zk?format=webp"
+              alt="Complicated Pregnancy"
+            />
+            <span>Complicated Pregnancy</span>
+          </a>
+          <a href="/filterdoctors?type=paediatrics" class="specialization-item">
+            <img
+              src="https://img.freepik.com/premium-photo/pediatrics-doctor-examines-baby-boy-concept-medicine-health_267293-3735.jpg?w=740"
+              alt="Paediatrics"
+            />
+            <span>Paediatrics</span>
+          </a>
+          <a
+            href="/filterdoctors?type=dermatologyvenerelogy"
+            class="specialization-item"
+          >
+            <img
+              src="https://img.freepik.com/premium-photo/procedure-mechanical-manual-face-cleansing-by-beautician-professional-skin-peeling_545646-268.jpg?w=740"
+              alt="Dermatology Venereology"
+            />
+            <span>Dermatology Venereology</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="best-practices">
+        <h2>Best Practices We Offer</h2>
+        <div class="practices-container">
+          <div class="practice-item">
+            <img
+              src="https://img.freepik.com/premium-photo/insurance-vector-icon-design-illustration_1174953-26136.jpg?w=740"
+              alt="Safe & Secure"
+            />
+            <h3>100% Safe & Secure</h3>
+            <p>
+              We take all safety and hygiene measures to keep our customers
+              safe.
+            </p>
+          </div>
+          <div class="practice-item">
+            <img
+              src="https://img.freepik.com/premium-photo/yellow-folder-red-stethoscope_869423-41.jpg?w=740"
+              alt="Online Health Records"
+            />
+            <h3>Online Health Records</h3>
+            <p>
+              You can access your health records online and download them all at
+              one place.
+            </p>
+          </div>
+          <div class="practice-item">
+            <img
+              src="https://img.freepik.com/premium-photo/3d-icons-people-with-speech-bubble-isolated-white-background-discussion-icon_59529-5587.jpg?w=740"
+              alt="Consultation"
+            />
+            <h3>Online / Walk-In Consultation</h3>
+            <p>
+              Experienced doctors now available for both Online and Walk-In
+              consultations.
+            </p>
+          </div>
+          <div class="practice-item">
+            <img
+              src="https://img.freepik.com/free-photo/rag-doll-carrying-boxes-wheelbarrow_1156-171.jpg?t=st=1728723919~exp=1728727519~hmac=d33616cd12f2c56d65931ba13fdff0782bff4e6c0ac73a557a3cfd5cd804ab58&w=740"
+              alt="Advantage"
+            />
+            <h3>Advantage</h3>
+            <p>Enjoy up to 50% discount on Doctor Consultations.</p>
+          </div>
+          <div class="practice-item">
+            <img
+              src="https://img.freepik.com/premium-photo/donation-vector-icon-design-illustration_1174953-26175.jpg?w=740"
+              alt="Competitive Prices"
+            />
+            <h3>Competitive Prices</h3>
+            <p>
+              Our prices for doctor consultations and diagnostics are the best
+              in the business.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h5>About Us</h5>
+          <p>
+            We are a leading healthcare provider offering the best online and
+            offline doctor consultation services. Our platform connects you with
+            certified doctors, ensuring you receive the care you need, wherever
+            you are.
+          </p>
+          <p><i class="fa fa-location"></i> 123 Health St, Med City</p>
+          <p><i class="fa fa-phone"></i> (+91) 9515234443</p>
+          <p><i class="fa fa-envelope"></i> support@healthcare.com</p>
+        </div>
+        <div class="footer-section">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#popular">Popular Specializations</a></li>
+            <li><a href="#service">Our Services</a></li>
+            <li><a href="#appointment">Book an Appointment</a></li>
+            <li><a href="/Reviews">Patient Reviews</a></li>
+            <li><a href="#news">Health News</a></li>
+            <li><a href="/Contactus">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h5>Stay Connected</h5>
+          <ul>
+            <li>
+              <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h5>Our Team</h5>
+          <ul class="team-list">
+            <li><i class="fas fa-user-md"></i> Sohan Nimmakayala</li>
+            <li><i class="fas fa-user-md"></i> Ishitha Yerramilli</li>
+            <li><i class="fas fa-user-md"></i> Akhil Ayyagari</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          Copyright &copy; 2024 <a href="#">MEDICOVER</a>. All Rights Reserved.
+          | <a href="#privacy">Privacy Policy</a> |
+          <a href="#terms">Terms of Use</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Modern scroll behavior
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        const nav = document.querySelector("nav");
+
+        if (window.scrollY > 50) {
+          header.style.background = "rgba(255, 255, 255, 0.98)";
+          nav.style.background = "rgba(255, 255, 255, 0.98)";
+        } else {
+          header.style.background = "rgba(255, 255, 255, 0.95)";
+          nav.style.background = "rgba(255, 255, 255, 0.95)";
+        }
+      });
+
+      // Search functionality
+      document.getElementById("search").addEventListener("input", function (e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const specializations = document.querySelectorAll(
+          ".specialization-item"
+        );
+
+        specializations.forEach((item) => {
+          const text = item.textContent.toLowerCase();
+          if (text.includes(searchTerm)) {
+            item.style.display = "flex";
+          } else {
+            item.style.display = searchTerm ? "none" : "flex";
+          }
+        });
+      });
+
+      // Add Font Awesome icons
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href =
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css";
+      document.head.appendChild(link);
+      // JS for Mobile Nav
+
+      const hamburger = document.getElementById("hamburger");
+      const navContent = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navContent.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>

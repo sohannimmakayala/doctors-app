@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctors | MEDICOVER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: #f5f7fa;
+        color: #333;
+        padding-bottom: 50px;
+      }
+
+      /* Navbar */
+      .main-navbar {
+        background-color: #ffffff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        padding: 12px 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .main-navbar ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .main-navbar ul li a {
+        text-decoration: none;
+        color: #222;
+        font-weight: 600;
+        font-size: 16px;
+        transition: 0.3s ease;
+      }
+
+      .main-navbar ul li a:hover {
+        color: #0d6efd;
+        border-bottom: 2px solid #0d6efd;
+        padding-bottom: 2px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+        text-align: center;
+        color: #0d6efd;
+      }
+
+      .filters {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .filters input,
+      .filters select {
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: white;
+        font-size: 15px;
+        font-weight: 500;
+        width: 250px;
+        max-width: 100%;
+      }
+
+      .doctor-listing {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .doctor-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 25px 20px;
+        text-align: center;
+        transition: 0.3s;
+      }
+
+      .doctor-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .doctor-card img {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        border: 4px solid #0d6efd33;
+      }
+
+      .doctor-card h2 {
+        font-size: 17px;
+        margin: 8px 0;
+        font-weight: 600;
+        color: #444;
+      }
+
+      .doctor-card button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+        background-color: #0d6efd;
+        color: white;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .doctor-card button:hover {
+        background-color: #084fc7;
+      }
+
+      .doctor-card button a {
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nav Bar -->
+    <nav class="main-navbar">
+      <ul>
+        <li><a href="/homepg">Home</a></li>
+        <li><a href="/pharmacy">Pharmacy</a></li>
+        <li><a href="/Aboutus">About Us</a></li>
+        <li><a href="/Reviews">Reviews</a></li>
+        <li><a href="/Contactus">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+      <h1>Available Doctors</h1>
+
+      <div class="filters">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search by name or specialization"
+        />
+        <select id="sort">
+          <option value="">Sort by</option>
+          <option value="experience">Experience</option>
+          <option value="name">Name</option>
+          <option value="hospital">Hospital</option>
+        </select>
+      </div>
+
+      <div class="doctor-listing" id="doctor-list">
+        {% for i in data %}
+        <div
+          class="doctor-card"
+          data-name="{{ i['username'] | lower }}"
+          data-specialization="{{ i['specialization'] | lower }}"
+          data-experience="{{ i['experience'] }}"
+          data-hospital="{{ i['working'] | lower }}"
+        >
+          <img src="{{ i['image_url'] }}" alt="Doctor Image" />
+          <h2>Name: {{ i['username'] }}</h2>
+          <h2>Specialization: {{ i['specialization'] }}</h2>
+          <h2>Experience: {{ i['experience'] }}</h2>
+          <h2>Working at: {{ i['working'] }}</h2>
+          <button>
+            <a href="/bookappointment?id={{ i['_id'] }}">Book Appointment</a>
+          </button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- JS for filter/search -->
+    <script>
+      const searchInput = document.getElementById("search");
+      const sortSelect = document.getElementById("sort");
+      const doctorList = document.getElementById("doctor-list");
+
+      searchInput.addEventListener("input", () => {
+        const term = searchInput.value.toLowerCase();
+        const cards = doctorList.querySelectorAll(".doctor-card");
+
+        cards.forEach((card) => {
+          const name = card.dataset.name;
+          const specialization = card.dataset.specialization;
+          card.style.display =
+            name.includes(term) || specialization.includes(term)
+              ? "block"
+              : "none";
+        });
+      });
+
+      sortSelect.addEventListener("change", () => {
+        const sortType = sortSelect.value;
+        const cards = Array.from(doctorList.querySelectorAll(".doctor-card"));
+
+        const sortedCards = cards.sort((a, b) => {
+          if (sortType === "experience") {
+            return (
+              parseInt(b.dataset.experience) - parseInt(a.dataset.experience)
+            );
+          } else if (sortType === "name") {
+            return a.dataset.name.localeCompare(b.dataset.name);
+          } else if (sortType === "hospital") {
+            return a.dataset.hospital.localeCompare(b.dataset.hospital);
+          } else {
+            return 0;
+          }
+        });
+
+        doctorList.innerHTML = "";
+        sortedCards.forEach((card) => doctorList.appendChild(card));
+      });
+    </script>
+  </body>
+</html>

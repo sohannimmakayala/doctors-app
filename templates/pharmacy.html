@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy - MEDICOVER</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+        color: #2d3748;
+      }
+
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo img {
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      header h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        z-index: 1001;
+      }
+
+      .hamburger .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        border-radius: 4px;
+        transition: 0.3s;
+      }
+
+      nav {
+        margin-top: 85px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 10px 0;
+        position: sticky;
+        top: 85px;
+        z-index: 999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        margin: 0 10px;
+        padding: 10px 15px;
+        border-radius: 8px;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #4a148c;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          width: 100%;
+          overflow: hidden;
+          max-height: 0;
+          transition: max-height 0.4s ease-in-out;
+        }
+
+        .nav-links.open {
+          max-height: 400px;
+        }
+
+        .nav-links a {
+          margin: 10px 0;
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 160px auto 80px;
+        padding: 0 20px;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2.8rem;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, #3949ab, #d81b60);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        width: 320px;
+        text-align: center;
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+        width: 80px;
+        margin-bottom: 20px;
+      }
+
+      .card h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: #4a148c;
+      }
+
+      .card ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .card li {
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+        color: #555;
+      }
+
+      .upload-button {
+        background: linear-gradient(135deg, #ec407a, #ab47bc);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .upload-button:hover {
+        background: linear-gradient(135deg, #ab47bc, #ec407a);
+        transform: scale(1.05);
+      }
+
+      footer {
+        background-color: #2d2d2d;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      footer a {
+        color: #ffccbc;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="https://media.istockphoto.com/id/1279385296/vector/health-and-medical-vector-stock-illustration-design-health-care-illustration.jpg?s=612x612&w=0&k=20&c=H-UmDQnb2wxHrKgpK7Gb4CGciAi_eV5wFnLfa5lozI4="
+          alt="MedLogo"
+        />
+        <h3>MEDICOVER</h3>
+      </div>
+    </header>
+
+    <nav>
+      <div class="nav-wrapper">
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="nav-links" id="nav-links">
+          <a href="/homepg">Home</a>
+          <a href="/pharmacy">Pharmacy</a>
+          <a href="/Aboutus">About Us</a>
+          <a href="/Reviews">Reviews</a>
+          <a href="/Contactus">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <h1>3 Ways to Order Your Medicine</h1>
+      <div class="cards">
+        <div class="card">
+          <img
+            src="https://img.icons8.com/?size=80&id=115639&format=png"
+            alt="Buy Online"
+          />
+          <h2>Buy Online</h2>
+          <ul>
+            <li>Search and select the medicines</li>
+            <li>Upload your doctor's prescription</li>
+            <li>Choose home delivery or pickup</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://img.icons8.com/?size=80&id=xW3wQeo0c65t&format=png"
+            alt="Click and Pick"
+          />
+          <h2>Click and Pick</h2>
+          <ul>
+            <li>Select items and pickup store</li>
+            <li>Show your prescription at the store</li>
+            <li>Quick and easy collection</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://img.icons8.com/?size=80&id=cYDmIYRXQ1yy&format=png"
+            alt="Receive Call Back"
+          />
+          <h2>Receive a Call Back</h2>
+          <ul>
+            <li>Our agent will call to confirm order</li>
+          </ul>
+          <button class="upload-button">Upload Medicine List</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>&copy; 2024 <a href="#">MEDICOVER</a>. All rights reserved.</footer>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>

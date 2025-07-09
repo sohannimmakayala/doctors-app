@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="signin.css"> -->
+    <title>Sign In</title>
+    <style>
+      body {
+        background-image: url(https://cdn.pixabay.com/photo/2021/10/03/03/47/doctor-6676747_1280.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        font-size: x-small;
+        font-weight: 100; /* Base size */
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full height of the viewport */
+        margin: 0;
+      }
+
+      .container {
+        background-color: transparent;
+        padding: 30px; /* Reduce padding */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        width: 35%; /* Responsive width */
+        max-width: 320px; /* Limit maximum width */
+        height: 45%; /* Fit within the viewport height */
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: space-between; /* Space between elements */
+      }
+
+      h2 {
+        text-align: center;
+        margin: 0; /* Remove margin to fit content */
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+        flex-grow: 1; /* Allow form groups to grow and fill space */
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 80%;
+        height: 20px;
+        padding: 0.5px;
+        border: 0.5px solid #e9e4e4;
+        border-radius: 4px;
+      }
+
+      input:focus {
+        border-color: #007bff;
+        font-size: medium;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      button {
+        height: min-content;
+        width: 80%;
+        padding: 10px;
+        background-color: #4d4b4bf8;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #218838;
+      }
+
+      .signup-link {
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .signup-link a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .signup-link a:hover {
+        text-decoration: underline;
+      }
+      .signin {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="Create an Account-form" action="/signupuser" method="post">
+        <h2>Create an Account</h2>
+        <div class="form-group">
+          <label for="name"><strong>Full Name</strong></label>
+          <input type="name" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email"><strong>Email</strong></label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <br />
+        <!-- <div class="form-group">
+          <label for="gender"><strong>Gender</strong></label>
+          <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div> -->
+        <div class="form-group">
+          <label for="mobile"><strong>Mobile number</strong></label>
+          <input
+            type="tel"
+            id="mobile"
+            name="mobile"
+            required
+            pattern="[0-9]{10}"
+            placeholder
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="password"><strong>Password</strong></label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <!-- <div>
+          <label for="password"><strong>Confirm Password</strong></label>
+          <input type="password" id="password" name="cpassword" required />
+        </div> -->
+
+        <a href="/paclogin"
+          ><button type="submit" class="signin">Sign up</button></a
+        >
+        <br />
+        <br />
+        <p class="signup-link">
+          Already have an account? <a href="/">Log in</a>
+        </p>
+      </form>
+      <div><p>{{status}}</p></div>
+    </div>
+  </body>
+</html>

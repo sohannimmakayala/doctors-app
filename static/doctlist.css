@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d0d7db;
+}
+
+.header {
+  background-color: rgb(91, 134, 175);
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filters button,
+.filters select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: rgb(91, 134, 175);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.doctor-listing {
+  display: flex;
+  justify-content: space-around;
+}
+
+.doctor-card {
+  background-color: #fff;
+  width: 30%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.doctor-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.doctor-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.doctor-card p {
+  margin-bottom: 10px;
+}
+
+.doctor-card a {
+  text-decoration: none;
+  color: blue;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: rgb(91, 134, 175);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: rgb(91, 134, 175);
+}
+nav {
+  background: linear-gradient(135deg, #5fa3ca95, #2b333d);
+  padding: 15px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  color: #ffeb3b;
+}
