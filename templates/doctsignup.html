@@ -1,183 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doctor Registration</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
-      body {
-        background: url("https://w0.peakpx.com/wallpaper/269/270/HD-wallpaper-doctor-motivation-medical-study.jpg")
-          no-repeat center center/cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+    body {
+      background: url("https://w0.peakpx.com/wallpaper/269/270/HD-wallpaper-doctor-motivation-medical-study.jpg") no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      color: #000000;
+    }
 
+    .registration-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 30px 25px;
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      margin-bottom: 24px;
+      color: #000000;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+
+    .registration-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #000000;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ffffff50;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #000000;
+      font-size: 15px;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input::placeholder {
+      color: #333333aa;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #0d6efd;
+      box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+    }
+
+    .submit-btn {
+      background-color: #0d6efd;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #094ec1;
+    }
+
+    .signup-link {
+      margin-top: 16px;
+      color: #000000;
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #0d6efd;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
       .registration-container {
-        background-color: transparent;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-        width: 450px;
-        /* height: 130vh; */
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .registration-container:hover {
-        transform: translateY(-10px);
-        box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.25);
+        padding: 20px;
       }
 
       h2 {
-        margin-bottom: 20px;
-        color: #333;
-        font-size: 24px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      .registration-form {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-        text-align: left;
-        position: relative;
-      }
-
-      .form-group label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #555555e8;
+        font-size: 20px;
       }
 
       .form-group input,
       .form-group select {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #f7f1f1f5;
-        border-radius: 6px;
-        font-size: 16px;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .form-group input:focus,
-      .form-group select:focus {
-        border-color: #0072ff;
-        box-shadow: 0px 0px 8px rgba(0, 114, 255, 0.2);
+        font-size: 14px;
       }
 
       .submit-btn {
-        padding: 12px 18px;
-        background-color: #0072ff;
-        color: white;
-        font-size: 18px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        font-size: 15px;
+        padding: 10px;
       }
-
-      .submit-btn:hover {
-        background-color: #0056b3;
-        box-shadow: 0px 4px 10px rgba(0, 114, 255, 0.4);
-      }
-
-      .submit-btn:active {
-        background-color: #003f7f;
-        box-shadow: none;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="registration-container">
-      <h2>Doctor Registration</h2>
-      <form class="registration-form" action="/doctsignup" method="post">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Enter username"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="specialization">Specialization</label>
-          <select id="specialization" name="specialization" required>
-            <option value="" disabled selected>Select specialization</option>
-            <option value="Generalmedicine">General medicine</option>
-            <option value="ENT">ENT</option>
-            <option value="Cardiology">Cardiology</option>
-            <option value="Pulmonary">Pulmonary</option>
-            <option value="orthopaedics">orthopaedics</option>
-            <option value="gynaecology">gynaecology</option>
-            <option value="diabetology">diabetology</option>
-            <option value="pregnancy">pregnancy</option>
-            <option value="paediatrics">paediatrics</option>
-            <option value="dermatologyvenerelogy">dermatologyvenerelogy</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="experience">Years of Experience</label>
-          <input
-            type="number"
-            id="experience"
-            name="experience"
-            placeholder="Enter years of experience"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="workplace">Where do you work?</label>
-          <input
-            type="text"
-            id="workplace"
-            name="working"
-            placeholder="Enter hospital/clinic name"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter password"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="workplace">Profile image</label>
-          <input
-            type="text"
-            id="image"
-            name="image"
-            placeholder="Image url"
-            required
-          />
-        </div>
-        <button type="submit" class="submit-btn">Register</button><br />
-        <p class="signup-link">
-          Already have an account? <a href="/doctlogin">Log in</a>
-        </p>
-      </form>
-      <div><p>{{status}}</p></div>
-    </div>
-  </body>
+    }
+  </style>
+</head>
+<body>
+  <div class="registration-container">
+    <h2>Doctor Registration</h2>
+    <form class="registration-form" action="/doctsignup" method="post">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter username" required />
+      </div>
+      <div class="form-group">
+        <label for="specialization">Specialization</label>
+        <select id="specialization" name="specialization" required>
+          <option value="" disabled selected>Select specialization</option>
+          <option value="Generalmedicine">General medicine</option>
+          <option value="ENT">ENT</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Pulmonary">Pulmonary</option>
+          <option value="orthopaedics">Orthopaedics</option>
+          <option value="gynaecology">Gynaecology</option>
+          <option value="diabetology">Diabetology</option>
+          <option value="pregnancy">Pregnancy</option>
+          <option value="paediatrics">Paediatrics</option>
+          <option value="dermatologyvenerelogy">Dermatology & Venerology</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="experience">Years of Experience</label>
+        <input type="number" id="experience" name="experience" placeholder="Enter experience" required />
+      </div>
+      <div class="form-group">
+        <label for="workplace">Workplace</label>
+        <input type="text" id="workplace" name="working" placeholder="Hospital or clinic name" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required />
+      </div>
+      <div class="form-group">
+        <label for="image">Profile Image URL</label>
+        <input type="text" id="image" name="image" placeholder="Image URL" required />
+      </div>
+      <button type="submit" class="submit-btn">Register</button>
+      <p class="signup-link">
+        Already have an account? <a href="/doctlogin">Log in</a>
+      </p>
+    </form>
+    <div><p>{{status}}</p></div>
+  </div>
+</body>
 </html>
