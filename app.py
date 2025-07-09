@@ -1,20 +1,39 @@
-from flask import Flask,render_template,request,session,redirect,url_for,flash
+
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from pymongo import MongoClient
 from bson import ObjectId
 from dotenv import load_dotenv
 import os
 
+# Load environment variables from .env
+load_dotenv()
+
+# Flask setup
+app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "default_secret")
+
+# MongoDB setup
 mongo_uri = os.getenv("MONGO_URI")
-client = MongoClient(mongo_uri)
+if not mongo_uri:
+    raise RuntimeError("MONGO_URI not set")
+
+try:
+    # TLS enabled with invalid certificates only for development (not for production)
+    client = MongoClient(os.getenv("MONGO_URI"))
+
+    db = client['medicover']
+
+    # Collections
+    users = db['users']
+    doctors = db['doctors']
+    pform = db['pform']
+    appointments = db['appointments']
+except Exception as e:
+    print("MongoDB connection failed:", e)
+    raise
 
 
-db=client['medicover']
-users=db['users']
-doctors=db['doctors']
-pform=db['pform']
-appointments=db['appointments']
-app=Flask(__name__)
-app.secret_key="sohan"
+
 @app.route('/')
 def home():
   return render_template("paclogin.html")
