@@ -278,14 +278,16 @@
           <ul class="team-list">
             <li><i class="fas fa-user-md"></i> Sohan Nimmakayala</li>
             <li><i class="fas fa-user-md"></i> Ishitha Yerramilli</li>
-            <li><i class="fas fa-user-md"></i> Akhil Ayyagari</li>
+           
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          Copyright &copy; 2024 <a href="#">MEDICOVER</a>. All Rights Reserved.
-          | <a href="#privacy">Privacy Policy</a> |
+          Last Updated: <span id="updateYear"></span> <br />
+          Copyright &copy; <span id="copyYear"></span>
+          <a href="#">MEDICOVER</a>. All Rights Reserved. |
+          <a href="#privacy">Privacy Policy</a> |
           <a href="#terms">Terms of Use</a>
         </p>
       </div>
@@ -337,6 +339,11 @@
       hamburger.addEventListener("click", () => {
         navContent.classList.toggle("open");
       });
+
+      // copyright
+      const year = new Date().getFullYear();
+      document.getElementById("updateYear").textContent = year;
+      document.getElementById("copyYear").textContent = year;
     </script>
   </body>
 </html>
