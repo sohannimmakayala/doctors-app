@@ -3,155 +3,151 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="signin.css"> -->
-    <title>Sign In</title>
+    <title>Sign Up | MEDICOVER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
-      body {
-        background-image: url(https://cdn.pixabay.com/photo/2021/10/03/03/47/doctor-6676747_1280.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
       }
+
       body {
-        font-family: Arial, sans-serif;
-        font-size: x-small;
-        font-weight: 100; /* Base size */
-        background-color: #f0f0f0;
+        background-image: url('https://cdn.pixabay.com/photo/2021/10/03/03/47/doctor-6676747_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh; /* Full height of the viewport */
-        margin: 0;
+        padding: 20px;
       }
 
       .container {
-        background-color: transparent;
-        padding: 30px; /* Reduce padding */
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-        width: 35%; /* Responsive width */
-        max-width: 320px; /* Limit maximum width */
-        height: 45%; /* Fit within the viewport height */
-        display: flex;
-        flex-direction: column; /* Stack elements vertically */
-        justify-content: space-between; /* Space between elements */
+       background: transparent; /* transparent background */
+        padding: 30px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px); /* glass effect */
       }
 
       h2 {
         text-align: center;
-        margin: 0; /* Remove margin to fit content */
+        margin-bottom: 25px;
+        color: #0d6efd;
       }
 
       .form-group {
-        margin-bottom: 15px;
-        flex-grow: 1; /* Allow form groups to grow and fill space */
+        margin-bottom: 18px;
       }
 
       label {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #fff;
       }
 
       input {
-        width: 80%;
-        height: 20px;
-        padding: 0.5px;
-        border: 0.5px solid #e9e4e4;
-        border-radius: 4px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: border 0.3s, box-shadow 0.3s;
       }
 
       input:focus {
-        border-color: #007bff;
-        font-size: medium;
+        border-color: #0d6efd;
         outline: none;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
       }
 
       button {
-        height: min-content;
-        width: 80%;
-        padding: 10px;
-        background-color: #4d4b4bf8;
-        color: white;
+        width: 100%;
+        padding: 12px;
+        background-color: #0d6efd;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
         border: none;
-        border-radius: 4px;
+        border-radius: 10px;
         cursor: pointer;
+        transition: background 0.3s;
       }
 
       button:hover {
-        background-color: #218838;
+        background-color: #0b5ed7;
       }
 
       .signup-link {
+        margin-top: 20px;
         text-align: center;
-        margin-top: 8px;
+        font-size: 14px;
+        color: #fff;
       }
 
       .signup-link a {
-        color: #007bff;
+        color: #0d6efd;
         text-decoration: none;
       }
 
       .signup-link a:hover {
         text-decoration: underline;
       }
-      .signin {
-        margin-top: 20px;
+
+      @media (max-width: 500px) {
+        .container {
+          padding: 20px;
+        }
+        h2 {
+          font-size: 24px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <form class="Create an Account-form" action="/signupuser" method="post">
+      <form action="/signupuser" method="post">
         <h2>Create an Account</h2>
+
         <div class="form-group">
-          <label for="name"><strong>Full Name</strong></label>
-          <input type="name" id="name" name="name" required />
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required />
         </div>
-        <div>
-          <label for="email"><strong>Email</strong></label>
+
+        <div class="form-group">
+          <label for="email">Email</label>
           <input type="email" id="email" name="email" required />
         </div>
-        <br />
-        <!-- <div class="form-group">
-          <label for="gender"><strong>Gender</strong></label>
-          <select id="gender" name="gender" required>
-            <option value="">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div> -->
+
         <div class="form-group">
-          <label for="mobile"><strong>Mobile number</strong></label>
+          <label for="mobile">Mobile Number</label>
           <input
             type="tel"
             id="mobile"
             name="mobile"
             required
             pattern="[0-9]{10}"
-            placeholder
+            placeholder="10-digit number"
           />
         </div>
-        <br />
+
         <div class="form-group">
-          <label for="password"><strong>Password</strong></label>
+          <label for="password">Password</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <!-- <div>
-          <label for="password"><strong>Confirm Password</strong></label>
-          <input type="password" id="password" name="cpassword" required />
-        </div> -->
 
-        <a href="/paclogin"
-          ><button type="submit" class="signin">Sign up</button></a
-        >
-        <br />
-        <br />
+        <button type="submit">Sign Up</button>
+
         <p class="signup-link">
           Already have an account? <a href="/">Log in</a>
         </p>
       </form>
-      <div><p>{{status}}</p></div>
+      <div><p style="color: red; text-align: center; margin-top: 10px;">{{status}}</p></div>
     </div>
   </body>
 </html>
