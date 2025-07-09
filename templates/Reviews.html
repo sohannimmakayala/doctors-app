@@ -404,7 +404,9 @@
       </div>
     </div>
 
-    <footer>&copy; 2025 <a href="#">MEDICOVER</a>. All rights reserved.</footer>
+   <footer>
+  &copy; <span id="year"></span> <a href="#">MEDICOVER</a>. All rights reserved.
+</footer>
 
     <script>
       const hamburger = document.getElementById("hamburger");
@@ -432,6 +434,7 @@
         feedbackList.prepend(card);
         reviewForm.reset();
       });
+      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
