@@ -304,7 +304,9 @@
       </div>
     </main>
 
-    <footer>&copy; 2024 <a href="#">MEDICOVER</a>. All rights reserved.</footer>
+    <footer>
+  &copy; <span id="year"></span> <a href="#">MEDICOVER</a>. All rights reserved.
+</footer>
 
     <script>
       const hamburger = document.getElementById("hamburger");
@@ -313,6 +315,7 @@
       hamburger.addEventListener("click", () => {
         navLinks.classList.toggle("open");
       });
+      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
