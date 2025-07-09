@@ -1,123 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="login2.css" /> -->
-    <style>
-      body {
-        background-image: url("https://img.freepik.com/premium-photo/female-doctor-with-glasses-stethoscope-her-neck_1185498-133101.jpg?w=900");
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        font-size: small;
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: right;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Login | Medicover</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
 
+    body {
+      background: url("https://img.freepik.com/premium-photo/female-doctor-with-glasses-stethoscope-her-neck_1185498-133101.jpg?w=900") no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: transparent;
+      backdrop-filter: none;
+      border-radius: 16px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: none;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0d6efd;
+      margin-bottom: 24px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #084fc7;
+    }
+
+    p {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
       .container {
-        background: smoky gray;
-        display: flexbox;
-        justify-items: right;
-        position: relative;
-        right: 90px;
-        height: 44vh;
-        width: 25%;
-        padding: 5px;
-        border-radius: 6px;
-        box-shadow: 0 0 90px rgba(7, 7, 7, 0.1);
-      }
-
-      .login-form {
-        width: 350px;
+        padding: 20px;
       }
 
       h2 {
-        text-align: center;
-        margin-bottom: 25px;
-      }
-
-      .input-group {
-        margin-bottom: 15px;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 5px;
-      }
-
-      input[type="text"],
-      input[type="password"] {
-        width: 80%;
-        padding: 5px;
-        border: 1px solid #ece3e3;
-        border-radius: 4px;
+        font-size: 20px;
       }
 
       button {
-        width: 85%;
+        font-size: 15px;
         padding: 10px;
-        background-color: #505350;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
       }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form class="login-form" action="/doctlogin" method="post">
+      <h2>Doctor Login</h2>
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit">Login</button>
 
-      button:hover {
-        background-color: #4cae4c;
-      }
-
-      .message {
-        text-align: center;
-        margin-top: 15px;
-      }
-    </style>
-    <title>Login Page</title>
-  </head>
-  <body>
-    <div class="container">
-      <form class="login-form" action="/doctlogin" method="post">
-        <h2>Doctors Login</h2>
-        <div class="input-group">
-          <label for="username"><strong>Username</strong></label>
-          <input type="text" id="username" name="username" required />
-        </div>
-        <!-- <div class="input-group">
-          <label for="email"><strong>Email</strong></label>
-          <input type="text" id="email" name="email" required />
-        </div> -->
-        <!-- <div class="input-group">
-          <label for="doctorId"><strong>Doctor Id</strong></label>
-          <input
-            type="text"
-            id="doctorId"
-            name="doctorId"
-            required
-            minlength="5"
-            maxlength="10"
-            pattern="[A-Z0-9]{5,10}"
-          />
-        </div> -->
-        <div class="input-group">
-          <label for="password"><strong>Password</strong></label>
-          <input type="password" id="password" name="password" required />
-        </div>
-        <button type="submit">Login</button>
-        <p>Don’t have an account? <a href="/doctsignup">Signup here</a></p>
-
-        <p>Patient login <a href="/">Login</a></p>
-
-        <!-- <button type="submit">Login</button> -->
-        <!-- <p class="message">Not registered? <a href="#">Create an account</a></p> -->
-      </form>
-      <div><p>{{status}}</p></div>
-    </div>
-  </body>
+      <p>Don't have an account? <a href="/doctsignup">Signup here</a></p>
+      <p>Are you a patient? <a href="/">Login</a></p>
+    </form>
+    <div><p>{{status}}</p></div>
+  </div>
+</body>
 </html>
